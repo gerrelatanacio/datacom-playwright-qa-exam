@@ -1,0 +1,26 @@
+{
+  "name": "datacom-playwright-qa-exam",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gerrelatanacio/datacom-playwright-qa-exam.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gerrelatanacio/datacom-playwright-qa-exam/issues"
+  },
+  "homepage": "https://github.com/gerrelatanacio/datacom-playwright-qa-exam#readme",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.2.0",
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.4",
+    "ts-node": "^10.9.2"
+  }
+}
