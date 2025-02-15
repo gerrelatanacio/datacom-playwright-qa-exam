@@ -1,0 +1,63 @@
+export const fields = {
+      firstName: {
+        valid: "GERREL",
+        validTwoNames: "Gerrel Timothy",
+        numeric: "123456789",
+        specialcharacters: "!@#%$%#^%&$",
+        whitespace: "     ",
+        empty: "",
+        moreThanMax: "ASDFGHJKLQWERTYUIOPZXCVBNMASDFGHJKLQWERTYUIOPZXCVBNMASDFGHJKLQWERTYUIOPZXCVBNMASDFGHJKLQWERTYUIOPZXCVBNMASDFGHJKLQWERTYUIOPZXCVBNM",
+        withTwoChars: "AJ",
+        withOneChar: "A",
+        alphaNumeric: "XX12345JK",
+        mixAlphaSpecialNumber: "ASDFHJK!1234",
+      },
+      lastName: {
+        valid: "Smith",
+        invalidNumeric: "12345",
+        invalidSpecialCharacters: "!@#$%",
+        invalidOnlyWhiteSpaces: "     ",
+        invalidMoreThanMax: "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJK",
+        invalidLessThanMin: "A",
+        validAlphabetWithSpaces: "De La Cruz",
+        invalidCombinationAlphaNumericSpecial: "John123!@#",
+      },
+      phone: {
+        valid: "+1234567890",
+        invalidAlphabet: "ABCDEF",
+        invalidSpecialCharacters: "!@#$%^&*",
+        invalidCombinationAlphaNumericSpecial: "123ABC!@#",
+        invalidLessThanMin: "12345",
+        validExactMin: "1234567890",
+        validMoreThanMin: "1234567890123",
+        mandatory: "Required",
+      },
+      country: {
+        selectedCountry: "Philippines",
+      },
+      emailAddress: {
+        valid: "example@test.com",
+        invalidOnlyAlphabet: "example",
+        invalidOnlyNumeric: "12345",
+        invalidOnlySpecialCharacters: "!@#$%",
+        invalidOnlyWhiteSpaces: "     ",
+        invalidMultipleEmails: "email1@test.com,email2@test.com",
+        mandatory: "Required",
+      },
+      password: {
+        validExactMax: "Abcde12345abcde!@#!@",
+        valid: "Abc12!",
+        validExactMin: "Abc12!",
+        validRangeSixToTwenty: "Abc123!@",
+        invalidMoreThanMaxCharacters: "Abc123!@#$%^&*()12345",
+      },
+      bannerMessages: {
+        successful: "Successfully registered the following information",
+        noPassword: "The password should contain between [6,20] characters!",
+        passwordLessThanMin: "The password should contain between [6,20] characters!",
+        passwordMoreThanMax: "The password should contain between [6,20] characters!",
+        noPhoneNumber: "The phone number should contain at least 10 characters!",
+        phoneLessThanTenDigits: "The phone number should contain at least 10 characters!",
+      }
+  };
+  
