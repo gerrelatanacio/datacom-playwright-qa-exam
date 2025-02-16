@@ -259,3 +259,22 @@ Feature: Registration Form Validations
       | firstNameValue | lastNameValue | phoneValue | emailAddressValue | passwordValue | countryValue | scenario                          |
       | valid          | valid         | valid      | valid             | valid         | Philippines  | Validate values for all fields    |
       | empty          | valid         | valid      | valid             | valid         | Australia    | Valid values for mandatory fields |
+
+  #UI Fields Validations
+  @regression-tests
+  Scenario Outline: Validate Successful Registration - Results Section - <scenario>
+    Given User navigates to Registration Form Page
+    Then Validate that "<field>" element is labelled as "<fieldName>" and of type "<elementType>"
+
+    Examples:
+      | field         | fieldName                             | elementType |
+      | firstName     | First Name                            | input       |
+      | lastName      | Last Name*                            | input       |
+      | phone         | Phone Number*                         | input       |
+      | emailAddress  | Email Address*                        | input       |
+      | password      | Password*                             | input       |
+      | country       | Country                               | select      |
+      | exampleCheck1 | I agree with the terms and conditions | checkbox    |
+      | registerBtn   | Register                              | button      |
+
+

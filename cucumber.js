@@ -6,8 +6,8 @@ module.exports = {
       "src/resources/projects/netlify/cucumber/steps/**/*.ts"
     ],
     paths: ["src/resources/projects/netlify/cucumber/features/**/*.feature"],
-    retry: 2,
-    parallel: 6,
+    retry: 0,
+    parallel: 4,
     format: [
       "progress", // Console output
       "json:reports/cucumber-report.json", // JSON report
