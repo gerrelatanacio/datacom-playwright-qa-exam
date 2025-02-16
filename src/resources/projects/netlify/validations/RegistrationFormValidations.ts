@@ -1,8 +1,8 @@
 import { expect, Locator, Page } from "@playwright/test";
-import { fields } from '../testdata/testdata';
+import { fields, RegistrationData } from '../testdata/testdata';
 import { locators } from '../pages/locators/registrationForm';
-
 import { objectExtractor } from "../cucumber/steps/registrationFormPage.steps";
+
 
 
 export default class RegistrationFormValidations {
@@ -13,7 +13,7 @@ export default class RegistrationFormValidations {
     }
 
     public async validateBannerMessage(scenario:string) {
-
+        
         const allResultSectionFields: Locator[] = await this.page.locator("#results-section div").all();
         let element: Locator;
 
@@ -39,7 +39,72 @@ export default class RegistrationFormValidations {
 
     }
 
+    public async validateCheckboxIsEnabled(locator:string){
+        console.log(`Locator Checkbox: ${locator}`);
+
+        const allFormIInputFields: Locator[] = await this.page.locator("#registerForm input").all();
+        let element: Locator;
+
+        for (let i = 0; i < allFormIInputFields.length; i++) {
+            let elementID = await allFormIInputFields[i].getAttribute("id");
+            if (elementID == locator) {
+                element = await allFormIInputFields[i];
+            }
+        }
+
+        await expect(element!.isEnabled())
+    }
+
+    public async validateSuccessfulRegistration(submittedData: RegistrationData){
 
 
+        const assertionErrors: string[] = [];
+
+        try {
+            let firstName = await this.page.locator("#resultFn")?.textContent() as string;
+            firstName = firstName.split(":", 2)[1].trimStart();
+            if (submittedData.firstName !== firstName) {
+                assertionErrors.push(`Expected firstName: ${submittedData.firstName}, but got: ${firstName}`);
+            }
+    
+            let lastName = await this.page.locator("#resultLn")?.textContent() as string;
+            lastName = lastName.split(":", 2)[1].trimStart();
+            if (submittedData.lastName !== lastName) {
+                assertionErrors.push(`Expected lastName: ${submittedData.lastName}, but got: ${lastName}`);
+            }
+    
+            let phoneNumber = await this.page.locator("#resultPhone")?.textContent() as string;
+            phoneNumber = phoneNumber.split(":", 2)[1].trimStart();
+            if (submittedData.phone !== phoneNumber) {
+                assertionErrors.push(`Expected phone: ${submittedData.phone}, but got: ${phoneNumber}`);
+            }
+    
+            let country = await this.page.locator("#country")?.textContent() as string;
+            country = country.split(":", 2)[1].trimStart();
+            if (submittedData.country !== country) {
+                assertionErrors.push(`Expected country: ${submittedData.country}, but got: ${country}`);
+            }
+    
+            let email = await this.page.locator("#resultEmail")?.textContent() as string;
+            email = email.split(":", 2)[1].trimStart();
+            if (submittedData.emailAddress !== email) {
+                assertionErrors.push(`Expected email: ${submittedData.emailAddress}, but got: ${email}`);
+            }
+    
+        } catch (error) {
+            // Catch unexpected errors during validation
+            assertionErrors.push(`An unexpected error occurred: ${error}`);
+        }
+    
+        // Throw all errors if there are any
+        if (assertionErrors.length > 0) {
+            throw new Error(`Soft Assertion Errors:\n${assertionErrors.join("\n")}`);
+        } else {
+            console.log("All assertions passed successfully!");
+        }
+
+
+   
+    }
 }
 
