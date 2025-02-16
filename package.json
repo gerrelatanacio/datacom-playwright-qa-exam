@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js"
+    "test": "cucumber-js",
+    "qa:smoke": "npx cucumber-js --tags '@smoke-test or @negative-test'",
+    "qa:regression": "npx cucumber-js --tags '@regression-test'",
+    "qa:negative": "npx cucumber-js --tags '@negative-test'",
+    "generate-report": "ts-node generate-report.ts",
+    "test:report": "npm run test && npm run generate-report"
   },
   "repository": {
     "type": "git",
@@ -21,6 +26,7 @@
     "@cucumber/cucumber": "^11.2.0",
     "@playwright/test": "^1.50.1",
     "@types/node": "^22.13.4",
+    "cucumber-html-reporter": "^7.2.0",
     "ts-node": "^10.9.2"
   }
 }
