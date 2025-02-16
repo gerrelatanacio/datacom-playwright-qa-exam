@@ -1,0 +1,22 @@
+pool:
+  name: SelfHosted
+
+steps:
+  # Install Node.js
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '20.x'
+    displayName: 'Install Node.js'
+
+  # Install dependencies
+  - script: |
+      echo "Installing dependencies..."
+      npm install
+    displayName: 'Install Dependencies'
+
+  # Run tests
+  - script: |
+      echo "Running tests..."
+      npm run test:report
+    displayName: 'Run Tests'
+    continueOnError: true
